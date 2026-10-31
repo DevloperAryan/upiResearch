@@ -45,7 +45,7 @@ function ScrollProgressBar() {
 
 export default function App() {
   return (
-    <div className="min-h-screen bg-[#071426] box-border-box">
+    <div className="min-h-screen bg-[#071426] box-sizing:border-box">
       <ScrollProgressBar />
       <Navbar />
       <main>
