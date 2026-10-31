@@ -36,7 +36,7 @@ function ScrollProgressBar() {
         className="h-full"
         style={{
           width: `${progress}%`,
-          background: 'linear-gradient(90deg, #38BDF8, #67E8F9)',
+          background: 'linear-gradient(90deg, #593ACB, #0891B2)',
         }}
       />
     </div>
@@ -45,10 +45,18 @@ function ScrollProgressBar() {
 
 export default function App() {
   return (
-    <div className="min-h-screen bg-[#071426] box-sizing:border-box">
+    <div className="min-h-screen text-[#172033]" style={{ backgroundColor: '#F7F8FC' }}>
+      {/* Skip to Content for Keyboard Accessibility */}
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[100] focus:px-4 focus:py-2.5 focus:bg-[#593ACB] focus:text-white focus:font-semibold focus:text-sm focus:rounded-lg focus:shadow-xl focus:outline-none"
+      >
+        Skip to main content
+      </a>
+
       <ScrollProgressBar />
       <Navbar />
-      <main>
+      <main id="main-content" tabIndex={-1} className="outline-none focus:outline-none">
         <Hero />
         <UPIOverview />
         <HowUPIWorks />

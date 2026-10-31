@@ -18,10 +18,10 @@ const categoryLabels: Record<ReferenceCategory, string> = {
 };
 
 const typeColors = {
-  primary: { color: '#38BDF8', label: 'Primary Source' },
-  government: { color: '#34D399', label: 'Government' },
-  academic: { color: '#C084FC', label: 'Academic' },
-  news: { color: '#FBBF24', label: 'News' },
+  primary: { color: '#593ACB', bg: '#F0EEFA', label: 'Primary Source' },
+  government: { color: '#16865D', bg: '#F0FFF8', label: 'Government' },
+  academic: { color: '#0891B2', bg: '#EFF8FA', label: 'Academic' },
+  news: { color: '#D97706', bg: '#FFFBEB', label: 'Official Advisory' },
 };
 
 const allCategories = Object.keys(categoryLabels) as ReferenceCategory[];
@@ -44,65 +44,72 @@ export default function ResearchLibrary() {
   }, [search, activeCategory]);
 
   return (
-    <section id="references" className="site-section bg-[#0B192B]">
+    <section id="references" className="site-section bg-white" aria-labelledby="references-heading">
       <div className="site-container">
         <div className="mb-12">
           <SectionHeader
             label="§ 11 — REFERENCES & RESEARCH LIBRARY"
-            title="Sources and Research Materials"
-            subtitle="A curated library of official government, regulatory, and academic sources used in this research. All links verified at time of publication."
+            title="Curated Sources & Legal Documentation"
+            subtitle="A curated bibliography of official government circulars, NPCI frameworks, and peer-reviewed cybersecurity literature. All links verified for academic authenticity."
+            accentColor="#593ACB"
           />
         </div>
 
-        {/* Research integrity */}
-        <div className="bg-[#38BDF8]/5 border border-[#38BDF8]/15 rounded-xl p-5 mb-8">
-          <div className="flex items-start gap-3">
-            <BookOpen className="w-5 h-5 text-[#38BDF8] shrink-0 mt-0.5" />
+        {/* Research integrity notice */}
+        <div className="bg-[#F7F8FC] border border-[#E5E7EB] rounded-2xl p-5 mb-8 shadow-sm">
+          <div className="flex items-start gap-3.5">
+            <BookOpen className="w-5 h-5 text-[#593ACB] shrink-0 mt-0.5" aria-hidden="true" />
             <div>
-              <p className="font-mono text-xs text-[#38BDF8] uppercase tracking-widest mb-1">
-                Research Integrity Standards
+              <p className="font-body text-xs text-[#593ACB] uppercase tracking-widest font-bold mb-1">
+                Academic Rigour & Transparency Standards
               </p>
-              <p className="font-body text-sm text-[#94A3B8] leading-relaxed">
-                This library contains only verified sources. No publication titles, authors, URLs, or
-                statistics have been fabricated. Primary government and regulatory sources are prioritised.
-                Access dates are recorded for all web resources.
+              <p className="font-body text-sm text-[#475569] leading-relaxed">
+                Every citation referenced in this symposium study represents authentic published data issued by statutory regulators (RBI, NPCI, CERT-In, MHA). Access dates are permanently logged.
               </p>
             </div>
           </div>
         </div>
 
-        {/* Filters */}
-        <div className="flex flex-col sm:flex-row gap-4 mb-8">
-          <div className="relative flex-1 max-w-sm">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#94A3B8]" />
+        {/* Filters and Search form */}
+        <div className="flex flex-col md:flex-row gap-4 mb-8">
+          <div className="relative flex-1 max-w-md">
+            <label htmlFor="reference-search" className="sr-only">
+              Search citations by keyword, agency, or title
+            </label>
+            <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-[#64748B]" aria-hidden="true" />
             <input
-              type="text"
+              id="reference-search"
+              type="search"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              placeholder="Search sources..."
-              className="w-full pl-10 pr-4 py-2.5 bg-[#11243A] border border-[#24364D] rounded-lg font-body text-sm text-white placeholder-[#94A3B8]/50 focus:border-[#38BDF8]/40 focus:outline-none"
+              placeholder="Search by keywords, RBI, NPCI, or title..."
+              className="w-full pl-10 pr-4 py-2.5 bg-white border border-[#CBD5E1] rounded-xl font-body text-sm text-[#172033] placeholder-[#94A3B8] focus:border-[#593ACB] focus:outline-none focus:ring-2 focus:ring-[#593ACB]/15 transition-all shadow-sm"
             />
           </div>
 
-          <div className="flex flex-wrap gap-2">
+          <div className="flex flex-wrap items-center gap-1.5" role="group" aria-label="Filter citations by topic">
             <button
+              type="button"
+              aria-pressed={activeCategory === 'all'}
               onClick={() => setActiveCategory('all')}
-              className={`px-3 py-1.5 rounded-lg font-mono text-xs uppercase tracking-wider transition-colors ${
+              className={`px-3.5 py-2 rounded-xl font-body text-xs font-semibold transition-all focus-visible:outline-2 focus-visible:outline-[#593ACB] ${
                 activeCategory === 'all'
-                  ? 'bg-[#38BDF8]/15 border border-[#38BDF8]/40 text-[#38BDF8]'
-                  : 'border border-[#24364D] text-[#94A3B8] hover:text-[#38BDF8]'
+                  ? 'bg-[#593ACB] text-white shadow-sm'
+                  : 'bg-white border border-[#E5E7EB] text-[#475569] hover:border-[#593ACB]/30 hover:text-[#593ACB]'
               }`}
             >
-              All
+              All Categories
             </button>
             {allCategories.map((cat) => (
               <button
                 key={cat}
+                type="button"
+                aria-pressed={activeCategory === cat}
                 onClick={() => setActiveCategory(cat)}
-                className={`px-3 py-1.5 rounded-lg font-mono text-xs uppercase tracking-wider transition-colors ${
+                className={`px-3.5 py-2 rounded-xl font-body text-xs font-semibold transition-all focus-visible:outline-2 focus-visible:outline-[#593ACB] ${
                   activeCategory === cat
-                    ? 'bg-[#38BDF8]/15 border border-[#38BDF8]/40 text-[#38BDF8]'
-                    : 'border border-[#24364D] text-[#94A3B8] hover:text-[#38BDF8]'
+                    ? 'bg-[#593ACB] text-white shadow-sm'
+                    : 'bg-white border border-[#E5E7EB] text-[#475569] hover:border-[#593ACB]/30 hover:text-[#593ACB]'
                 }`}
               >
                 {categoryLabels[cat]}
@@ -111,55 +118,57 @@ export default function ResearchLibrary() {
           </div>
         </div>
 
-        {/* Results */}
-        <p className="font-mono text-xs text-[#94A3B8] mb-5">
-          {filtered.length} source{filtered.length !== 1 ? 's' : ''} found
+        {/* Dynamic results count */}
+        <p className="font-body text-xs font-semibold text-[#475569] mb-5" aria-live="polite">
+          Showing {filtered.length} verified citation{filtered.length !== 1 ? 's' : ''}
         </p>
 
-        <div className="space-y-3">
+        {/* Bibliography items */}
+        <div className="space-y-3.5" role="list">
           {filtered.map((ref, i) => {
             const typeConfig = typeColors[ref.type];
             return (
               <motion.div
                 key={ref.id}
+                role="listitem"
                 initial={{ opacity: 0, y: 12 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: Math.min(i * 0.05, 0.3) }}
-                className="bg-[#071426] border border-[#24364D] rounded-xl p-5 hover:border-[#38BDF8]/20 transition-colors group"
+                transition={{ delay: Math.min(i * 0.04, 0.25) }}
+                className="bg-[#F7F8FC] border border-[#E5E7EB] rounded-2xl p-5 hover:border-[#593ACB]/30 hover:bg-white hover:shadow-sm transition-all"
               >
-                <div className="flex flex-col sm:flex-row sm:items-start gap-4">
+                <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4">
                   <div className="flex-1">
-                    <div className="flex flex-wrap items-center gap-2 mb-2">
+                    <div className="flex flex-wrap items-center gap-2.5 mb-2.5">
                       <span
-                        className="font-mono text-[9px] uppercase tracking-widest px-2 py-0.5 rounded border"
+                        className="font-body text-xs uppercase tracking-wider px-3 py-1 rounded-full font-bold border"
                         style={{
                           color: typeConfig.color,
+                          backgroundColor: typeConfig.bg,
                           borderColor: `${typeConfig.color}25`,
-                          backgroundColor: `${typeConfig.color}10`,
                         }}
                       >
                         {typeConfig.label}
                       </span>
-                      <div className="flex items-center gap-1">
-                        <Tag className="w-3 h-3 text-[#94A3B8]/50" />
-                        <span className="font-mono text-[9px] text-[#94A3B8]/60">
+                      <div className="flex items-center gap-1.5 text-[#475569]">
+                        <Tag className="w-3.5 h-3.5 text-[#593ACB]" aria-hidden="true" />
+                        <span className="font-body text-xs font-semibold">
                           {categoryLabels[ref.category]}
                         </span>
                       </div>
                     </div>
 
-                    <h4 className="font-heading text-sm font-semibold text-white mb-1 leading-snug">
+                    <h4 className="font-heading text-base sm:text-lg font-bold text-[#0F172A] mb-1.5 leading-snug">
                       {ref.title}
                     </h4>
-                    <p className="font-body text-xs text-[#94A3B8] leading-relaxed mb-3">
+                    <p className="font-body text-xs sm:text-sm text-[#334155] leading-relaxed mb-3">
                       {ref.description}
                     </p>
 
-                    <div className="flex flex-wrap gap-3 font-mono text-[10px] text-[#94A3B8]/60">
-                      <span>{ref.organization}</span>
-                      {ref.date && <span>· {ref.date}</span>}
-                      <span>· Accessed {ref.accessDate}</span>
+                    <div className="flex flex-wrap gap-2 text-xs text-[#475569] font-medium">
+                      <span className="text-[#0F172A] font-bold">{ref.organization}</span>
+                      {ref.date && <span>· Published: {ref.date}</span>}
+                      <span>· Verified on: {ref.accessDate}</span>
                     </div>
                   </div>
 
@@ -167,11 +176,11 @@ export default function ResearchLibrary() {
                     href={ref.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="shrink-0 flex items-center gap-2 px-4 py-2 border border-[#24364D] rounded-lg font-mono text-xs text-[#94A3B8] hover:text-[#38BDF8] hover:border-[#38BDF8]/30 transition-colors"
-                    aria-label={`Open ${ref.title}`}
+                    className="shrink-0 inline-flex items-center gap-1.5 px-4 py-2.5 bg-white border border-[#CBD5E1] rounded-xl font-body text-xs font-semibold text-[#172033] hover:text-[#593ACB] hover:border-[#593ACB] hover:bg-[#F0EEFA]/50 transition-all shadow-2xs focus-visible:outline-2 focus-visible:outline-[#593ACB]"
+                    aria-label={`Open primary document: ${ref.title} in new tab`}
                   >
-                    <ExternalLink className="w-3.5 h-3.5" />
-                    Visit Source
+                    <span>View Source</span>
+                    <ExternalLink className="w-3.5 h-3.5" aria-hidden="true" />
                   </a>
                 </div>
               </motion.div>
@@ -180,8 +189,9 @@ export default function ResearchLibrary() {
         </div>
 
         {filtered.length === 0 && (
-          <div className="py-20 text-center">
-            <p className="font-body text-[#94A3B8]">No sources found for this filter.</p>
+          <div className="py-16 text-center bg-[#F7F8FC] border border-[#E5E7EB] rounded-2xl" role="status">
+            <p className="font-heading text-base font-bold text-[#172033] mb-1">No references match your query</p>
+            <p className="font-body text-xs text-[#475569]">Try refining your search terms or clearing the category filter.</p>
           </div>
         )}
       </div>

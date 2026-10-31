@@ -18,7 +18,7 @@ const methodSteps = [
     title: 'Secondary Research',
     description:
       'Systematic review of official NPCI publications, RBI circulars, CERT-In advisories, government reports, and peer-reviewed academic literature on UPI security.',
-    color: '#38BDF8',
+    color: '#593ACB',
     sources: ['NPCI Annual Reports', 'RBI Guidelines', 'CERT-In Advisories'],
   },
   {
@@ -27,7 +27,7 @@ const methodSteps = [
     title: 'Regulatory Analysis',
     description:
       'Analysis of RBI Payment System regulations, NPCI operational circulars, and Ministry of Home Affairs cybercrime statistics and frameworks.',
-    color: '#60A5FA',
+    color: '#0891B2',
     sources: ['RBI Payment Vision', 'MHA Cybercrime Data', 'PIB Reports'],
   },
   {
@@ -36,7 +36,7 @@ const methodSteps = [
     title: 'Student Awareness Survey',
     description:
       'Primary data collection through a structured survey measuring digital payment security awareness among college students — a key at-risk demographic.',
-    color: '#FBBF24',
+    color: '#D97706',
     sources: ['VSIT Student Sample', 'Structured Questionnaire'],
   },
   {
@@ -45,7 +45,7 @@ const methodSteps = [
     title: 'Comparative Analysis',
     description:
       'Cross-referencing fraud patterns identified in official reports with survey findings to identify awareness gaps and high-priority intervention areas.',
-    color: '#34D399',
+    color: '#16865D',
     sources: ['Survey Results', 'NPCI Fraud Data', 'RBI Statistics'],
   },
   {
@@ -54,7 +54,7 @@ const methodSteps = [
     title: 'Case Documentation',
     description:
       'Analysis of documented UPI fraud case patterns based on official advisories and cybercrime reports to create representative educational scenarios.',
-    color: '#F87171',
+    color: '#DC4545',
     sources: ['CERT-In Alerts', 'Cybercrime Reports', 'NPCI Awareness Bulletins'],
   },
   {
@@ -63,7 +63,7 @@ const methodSteps = [
     title: 'Recommendations',
     description:
       'Evidence-based prevention strategies synthesised from research findings, security frameworks, and identified awareness gaps in the student population.',
-    color: '#C084FC',
+    color: '#7C5CE8',
     sources: ['Research Synthesis', 'Expert Guidelines'],
   },
 ];
@@ -77,7 +77,7 @@ const limitations = [
 
 export default function ResearchMethodology() {
   return (
-    <section id="research" className="site-section bg-[#0B192B]">
+    <section id="research" className="site-section" style={{ backgroundColor: '#F7F8FC' }}>
       <div className="site-container">
         <div className="mb-12">
           <SectionHeader
@@ -90,8 +90,8 @@ export default function ResearchMethodology() {
         <div className="grid lg:grid-cols-2 gap-12 mb-16">
           {/* Objectives */}
           <div>
-            <h3 className="font-heading text-lg font-semibold text-white mb-6 flex items-center gap-2">
-              <span className="font-mono text-xs text-[#38BDF8] uppercase tracking-widest">Research Objectives</span>
+            <h3 className="font-heading text-xl font-bold text-[#0F172A] mb-6 flex items-center gap-2">
+              <span className="font-body text-xs sm:text-sm text-[#593ACB] uppercase tracking-wider font-bold">Research Objectives</span>
             </h3>
             <ol className="space-y-4">
               {objectives.map((obj, i) => (
@@ -101,12 +101,12 @@ export default function ResearchMethodology() {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.1 }}
-                  className="flex items-start gap-4"
+                  className="flex items-start gap-3.5"
                 >
-                  <div className="w-6 h-6 rounded-full bg-[#38BDF8]/15 border border-[#38BDF8]/30 flex items-center justify-center shrink-0 mt-0.5">
-                    <span className="font-mono text-[10px] text-[#38BDF8] font-bold">{i + 1}</span>
+                  <div className="w-7 h-7 rounded-full bg-[#593ACB]/15 border border-[#593ACB]/30 flex items-center justify-center shrink-0 mt-0.5">
+                    <span className="font-body text-xs text-[#593ACB] font-bold">{i + 1}</span>
                   </div>
-                  <p className="font-body text-sm text-[#94A3B8] leading-relaxed">{obj}</p>
+                  <p className="font-body text-sm sm:text-base text-[#334155] leading-relaxed font-medium">{obj}</p>
                 </motion.li>
               ))}
             </ol>
@@ -114,18 +114,18 @@ export default function ResearchMethodology() {
 
           {/* Limitations */}
           <div>
-            <h3 className="font-heading text-lg font-semibold text-white mb-6">
-              <span className="font-mono text-xs text-[#FBBF24] uppercase tracking-widest">Methodology Limitations</span>
+            <h3 className="font-heading text-xl font-bold text-[#0F172A] mb-6">
+              <span className="font-body text-xs sm:text-sm text-[#D97706] uppercase tracking-wider font-bold">Methodology Limitations</span>
             </h3>
-            <div className="bg-[#11243A] border border-[#FBBF24]/20 rounded-xl p-6">
-              <p className="font-body text-sm text-[#94A3B8] mb-4 leading-relaxed">
-                Academic integrity requires transparent disclosure of research limitations. The following constraints apply to this study:
+            <div className="bg-white border border-[#D97706]/20 rounded-2xl p-6 sm:p-7 shadow-sm">
+              <p className="font-body text-sm sm:text-base text-[#334155] mb-4 leading-relaxed font-medium">
+                Academic integrity requires transparent disclosure of research constraints. The following boundaries apply to this empirical evaluation:
               </p>
               <ul className="space-y-3">
                 {limitations.map((lim, i) => (
-                  <li key={i} className="flex items-start gap-2">
-                    <span className="text-[#FBBF24] shrink-0 mt-1">›</span>
-                    <span className="font-body text-xs text-[#94A3B8] leading-relaxed">{lim}</span>
+                  <li key={i} className="flex items-start gap-2.5">
+                    <span className="text-[#D97706] font-bold shrink-0 mt-0.5 text-base">›</span>
+                    <span className="font-body text-xs sm:text-sm text-[#475569] leading-relaxed">{lim}</span>
                   </li>
                 ))}
               </ul>
@@ -135,8 +135,8 @@ export default function ResearchMethodology() {
 
         {/* Methodology steps */}
         <div>
-          <h3 className="font-mono text-xs text-[#94A3B8] uppercase tracking-widest mb-8">
-            Research Process
+          <h3 className="font-heading text-lg font-bold text-[#0F172A] uppercase tracking-wider mb-6">
+            Sequential Research Protocol
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
             {methodSteps.map((step, i) => {
@@ -148,30 +148,32 @@ export default function ResearchMethodology() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.4, delay: i * 0.08 }}
-                  className="bg-[#071426] border border-[#24364D] rounded-xl p-6 hover:border-[#38BDF8]/20 transition-colors"
+                  className="bg-white border border-[#E5E7EB] rounded-2xl p-6 hover:border-[#593ACB]/30 hover:shadow-md transition-all flex flex-col justify-between"
                 >
-                  <div className="flex items-center gap-3 mb-3">
-                    <div
-                      className="w-9 h-9 rounded-lg flex items-center justify-center"
-                      style={{ backgroundColor: `${step.color}15` }}
-                    >
-                      <Icon className="w-4.5 h-4.5" style={{ color: step.color }} />
+                  <div>
+                    <div className="flex items-center gap-3 mb-3.5">
+                      <div
+                        className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0"
+                        style={{ backgroundColor: `${step.color}15` }}
+                      >
+                        <Icon className="w-5 h-5" style={{ color: step.color }} />
+                      </div>
+                      <div>
+                        <span className="font-body text-xs uppercase tracking-wider font-bold" style={{ color: step.color }}>
+                          Phase {step.id}
+                        </span>
+                        <h4 className="font-heading text-base font-bold text-[#0F172A]">{step.title}</h4>
+                      </div>
                     </div>
-                    <div>
-                      <p className="font-mono text-[9px] uppercase tracking-widest text-[#94A3B8]">
-                        Phase {step.id}
-                      </p>
-                      <p className="font-heading text-sm font-semibold text-white">{step.title}</p>
-                    </div>
+                    <p className="font-body text-xs sm:text-sm text-[#475569] leading-relaxed mb-4">
+                      {step.description}
+                    </p>
                   </div>
-                  <p className="font-body text-xs text-[#94A3B8] leading-relaxed mb-4">
-                    {step.description}
-                  </p>
-                  <div className="flex flex-wrap gap-1.5">
+                  <div className="flex flex-wrap gap-1.5 pt-2 border-t border-[#F1F5F9]">
                     {step.sources.map((src) => (
                       <span
                         key={src}
-                        className="font-mono text-[9px] px-2 py-0.5 rounded border"
+                        className="font-body text-xs px-2.5 py-1 rounded-lg border font-semibold"
                         style={{
                           color: step.color,
                           borderColor: `${step.color}25`,

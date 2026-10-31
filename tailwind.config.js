@@ -4,23 +4,30 @@ export default {
   theme: {
     extend: {
       colors: {
-        navy: {
-          950: '#071426',
-          900: '#0B192B',
-          800: '#11243A',
-          700: '#162D47',
-          600: '#1E3A54',
+        // Light theme palette
+        brand: {
+          purple: '#593ACB',
+          'purple-light': '#7C5CE8',
+          cyan: '#0891B2',
+          'cyan-light': '#06B6D4',
         },
-        cyan: {
-          400: '#38BDF8',
-          300: '#67E8F9',
+        light: {
+          bg: '#F7F8FC',
+          secondary: '#F0EEFA',
+          card: '#FFFFFF',
+          elevated: '#F9FAFB',
         },
-        border: '#24364D',
-        muted: '#94A3B8',
-        danger: '#F87171',
-        warning: '#FBBF24',
-        success: '#34D399',
-        info: '#60A5FA',
+        ink: {
+          primary: '#172033',
+          secondary: '#64748B',
+          muted: '#94A3B8',
+        },
+        border: '#E5E7EB',
+        'border-strong': '#D1D5DB',
+        danger: '#DC4545',
+        warning: '#D97706',
+        success: '#16865D',
+        info: '#0891B2',
       },
       fontFamily: {
         heading: ['Space Grotesk', 'sans-serif'],
@@ -32,6 +39,7 @@ export default {
         'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
         'float': 'float 6s ease-in-out infinite',
         'draw': 'draw 2s ease-in-out forwards',
+        'fade-up': 'fadeUp 0.5s ease forwards',
       },
       keyframes: {
         scan: {
@@ -45,6 +53,10 @@ export default {
         draw: {
           '0%': { strokeDashoffset: '1000' },
           '100%': { strokeDashoffset: '0' },
+        },
+        fadeUp: {
+          '0%': { opacity: '0', transform: 'translateY(16px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' },
         },
       },
     },

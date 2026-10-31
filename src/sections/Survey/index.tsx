@@ -46,7 +46,7 @@ const initialData: SurveyRow[] = [
   },
 ];
 
-const COLORS = { yes: '#34D399', no: '#F87171' };
+const COLORS = { yes: '#16865D', no: '#DC4545' };
 
 function SurveyInput({
   row,
@@ -60,48 +60,52 @@ function SurveyInput({
   const nPct = total > 0 ? 100 - yPct : 0;
 
   return (
-    <div className="bg-[#0B192B] border border-[#24364D] rounded-xl p-5">
-      <p className="font-body text-sm text-white mb-4 leading-relaxed">
+    <div className="bg-white border border-[#E5E7EB] rounded-2xl p-5 sm:p-6 shadow-sm">
+      <p className="font-heading text-sm text-[#172033] mb-4 leading-relaxed font-bold">
         Q{row.id}: {row.question}
       </p>
 
       <div className="grid grid-cols-2 gap-3 mb-4">
-        <label className="flex flex-col gap-1">
-          <span className="font-mono text-[10px] text-[#34D399] uppercase tracking-widest">
+        <div className="flex flex-col gap-1.5">
+          <label htmlFor={`yes-input-${row.id}`} className="font-body text-xs text-[#16865D] uppercase tracking-wider font-bold">
             Yes responses
-          </span>
+          </label>
           <input
+            id={`yes-input-${row.id}`}
             type="number"
             min="0"
+            aria-label={`Question ${row.id} Yes responses count`}
             value={row.yesCount || ''}
             onChange={(e) =>
               onChange(row.id, 'yesCount', Math.max(0, parseInt(e.target.value) || 0))
             }
-            className="bg-[#11243A] border border-[#24364D] rounded-lg px-3 py-2 font-mono text-sm text-white focus:border-[#34D399]/50 focus:outline-none"
+            className="bg-[#F7F8FC] border border-[#CBD5E1] rounded-xl px-3 py-2 font-mono text-sm font-semibold text-[#172033] focus:border-[#16865D] focus:outline-none focus:ring-2 focus:ring-[#16865D]/15 transition-all"
             placeholder="0"
           />
-        </label>
-        <label className="flex flex-col gap-1">
-          <span className="font-mono text-[10px] text-[#F87171] uppercase tracking-widest">
+        </div>
+        <div className="flex flex-col gap-1.5">
+          <label htmlFor={`no-input-${row.id}`} className="font-body text-xs text-[#DC4545] uppercase tracking-wider font-bold">
             No responses
-          </span>
+          </label>
           <input
+            id={`no-input-${row.id}`}
             type="number"
             min="0"
+            aria-label={`Question ${row.id} No responses count`}
             value={row.noCount || ''}
             onChange={(e) =>
               onChange(row.id, 'noCount', Math.max(0, parseInt(e.target.value) || 0))
             }
-            className="bg-[#11243A] border border-[#24364D] rounded-lg px-3 py-2 font-mono text-sm text-white focus:border-[#F87171]/50 focus:outline-none"
+            className="bg-[#F7F8FC] border border-[#CBD5E1] rounded-xl px-3 py-2 font-mono text-sm font-semibold text-[#172033] focus:border-[#DC4545] focus:outline-none focus:ring-2 focus:ring-[#DC4545]/15 transition-all"
             placeholder="0"
           />
-        </label>
+        </div>
       </div>
 
       {total > 0 && (
-        <div className="space-y-1.5">
+        <div className="space-y-2 pt-2 border-t border-[#F3F4F6]" aria-live="polite">
           <div className="flex items-center gap-2">
-            <div className="flex-1 h-2 bg-[#24364D] rounded-full overflow-hidden">
+            <div className="flex-1 h-2 bg-[#F3F4F6] rounded-full overflow-hidden" role="progressbar" aria-valuenow={yPct} aria-valuemin={0} aria-valuemax={100} aria-label={`Question ${row.id} Yes ratio`}>
               <div
                 className="h-full rounded-full transition-all duration-700"
                 style={{
@@ -110,10 +114,10 @@ function SurveyInput({
                 }}
               />
             </div>
-            <span className="font-mono text-xs text-[#34D399] w-10 text-right">{yPct}%</span>
+            <span className="font-mono text-xs text-[#16865D] w-12 text-right font-bold">{yPct}%</span>
           </div>
           <div className="flex items-center gap-2">
-            <div className="flex-1 h-2 bg-[#24364D] rounded-full overflow-hidden">
+            <div className="flex-1 h-2 bg-[#F3F4F6] rounded-full overflow-hidden" role="progressbar" aria-valuenow={nPct} aria-valuemin={0} aria-valuemax={100} aria-label={`Question ${row.id} No ratio`}>
               <div
                 className="h-full rounded-full transition-all duration-700"
                 style={{
@@ -122,10 +126,10 @@ function SurveyInput({
                 }}
               />
             </div>
-            <span className="font-mono text-xs text-[#F87171] w-10 text-right">{nPct}%</span>
+            <span className="font-mono text-xs text-[#DC4545] w-12 text-right font-bold">{nPct}%</span>
           </div>
-          <p className="font-mono text-[10px] text-[#94A3B8]">
-            Total: {total} respondents
+          <p className="font-body text-xs text-[#475569] font-medium">
+            Total responses: <strong className="text-[#172033]">{total}</strong> respondents
           </p>
         </div>
       )}
@@ -160,25 +164,25 @@ export default function Survey() {
   });
 
   return (
-    <section id="survey" className="site-section bg-[#071426]">
+    <section id="survey" className="site-section bg-white">
       <div className="site-container">
         <div className="mb-12">
           <SectionHeader
             label="§ 06 — STUDENT AWARENESS SURVEY"
             title="Primary Research: Awareness Data"
             subtitle="Enter actual survey results to visualise real findings. This module does not contain fabricated data — all entries are made by the research team."
-            accentColor="#34D399"
+            accentColor="#16865D"
           />
         </div>
 
         {/* Research integrity notice */}
-        <div className="flex items-start gap-3 bg-[#FBBF24]/5 border border-[#FBBF24]/20 rounded-xl p-4 mb-8">
-          <AlertCircle className="w-5 h-5 text-[#FBBF24] shrink-0 mt-0.5" />
+        <div className="flex items-start gap-3 bg-[#FFFBEB] border border-[#D97706]/20 rounded-xl p-4 mb-8">
+          <AlertCircle className="w-5 h-5 text-[#D97706] shrink-0 mt-0.5" />
           <div>
-            <p className="font-mono text-xs text-[#FBBF24] uppercase tracking-widest mb-1">
+            <p className="font-body text-xs text-[#D97706] uppercase tracking-widest mb-1 font-semibold">
               Research Integrity Notice
             </p>
-            <p className="font-body text-sm text-[#94A3B8]">
+            <p className="font-body text-sm text-[#64748B]">
               This data visualisation module displays only actual survey responses entered by the
               research team. No placeholder or fabricated responses are pre-loaded. Enter your
               genuine survey data below.
@@ -189,17 +193,17 @@ export default function Survey() {
         {/* Sample size info */}
         <div className="flex items-center gap-4 mb-8">
           <div className="flex items-center gap-2">
-            <Users className="w-5 h-5 text-[#38BDF8]" />
-            <span className="font-mono text-sm text-white">
+            <Users className="w-5 h-5 text-[#593ACB]" />
+            <span className="font-body text-sm text-[#172033] font-medium">
               Total Respondents:{' '}
-              <span className="text-[#38BDF8] font-bold">
+              <span className="text-[#593ACB] font-bold">
                 {totalRespondents > 0 ? totalRespondents : '—'}
               </span>
             </span>
           </div>
           <button
             onClick={() => setIsEditing(!isEditing)}
-            className="flex items-center gap-2 px-3 py-1.5 border border-[#24364D] rounded-lg font-mono text-xs text-[#94A3B8] hover:text-[#38BDF8] hover:border-[#38BDF8]/30 transition-colors"
+            className="flex items-center gap-2 px-3 py-1.5 border border-[#E5E7EB] rounded-lg font-body text-xs font-medium text-[#64748B] hover:text-[#593ACB] hover:border-[#593ACB]/30 transition-colors bg-white"
           >
             <Edit3 className="w-3.5 h-3.5" />
             {isEditing ? 'View Charts' : 'Edit Data'}
@@ -214,16 +218,16 @@ export default function Survey() {
           </div>
         ) : !hasData ? (
           <div className="py-20 text-center">
-            <BarChart2 className="w-12 h-12 text-[#24364D] mx-auto mb-4" />
+            <BarChart2 className="w-12 h-12 text-[#D1D5DB] mx-auto mb-4" />
             <p className="font-heading text-lg font-semibold text-[#94A3B8] mb-2">
               No Survey Data Yet
             </p>
-            <p className="font-body text-sm text-[#94A3B8]/60 mb-6">
+            <p className="font-body text-sm text-[#94A3B8] mb-6">
               Enter actual survey responses to generate charts.
             </p>
             <button
               onClick={() => setIsEditing(true)}
-              className="px-5 py-2.5 bg-[#38BDF8]/10 border border-[#38BDF8]/30 rounded-lg font-mono text-sm text-[#38BDF8] hover:bg-[#38BDF8]/15 transition-colors"
+              className="px-5 py-2.5 bg-[#593ACB]/10 border border-[#593ACB]/25 rounded-lg font-body text-sm text-[#593ACB] font-medium hover:bg-[#593ACB]/15 transition-colors"
             >
               Enter Survey Data
             </button>
@@ -234,10 +238,10 @@ export default function Survey() {
             animate={{ opacity: 1, y: 0 }}
             className="space-y-8"
           >
-            <div className="bg-[#0B192B] border border-[#24364D] rounded-xl p-6">
+            <div className="bg-white border border-[#E5E7EB] rounded-xl p-6 shadow-sm">
               <div className="flex items-center gap-2 mb-6">
-                <BarChart2 className="w-5 h-5 text-[#38BDF8]" />
-                <h3 className="font-heading text-base font-semibold text-white">
+                <BarChart2 className="w-5 h-5 text-[#593ACB]" />
+                <h3 className="font-heading text-base font-semibold text-[#172033]">
                   Survey Results — Yes / No Breakdown (%)
                 </h3>
               </div>
@@ -245,12 +249,12 @@ export default function Survey() {
                 <BarChart data={chartData} margin={{ top: 10, right: 20, left: 0, bottom: 0 }}>
                   <XAxis
                     dataKey="name"
-                    tick={{ fill: '#94A3B8', fontFamily: 'JetBrains Mono', fontSize: 11 }}
-                    axisLine={{ stroke: '#24364D' }}
+                    tick={{ fill: '#94A3B8', fontFamily: 'Inter', fontSize: 11 }}
+                    axisLine={{ stroke: '#E5E7EB' }}
                     tickLine={false}
                   />
                   <YAxis
-                    tick={{ fill: '#94A3B8', fontFamily: 'JetBrains Mono', fontSize: 11 }}
+                    tick={{ fill: '#94A3B8', fontFamily: 'Inter', fontSize: 11 }}
                     axisLine={false}
                     tickLine={false}
                     domain={[0, 100]}
@@ -258,12 +262,13 @@ export default function Survey() {
                   />
                   <Tooltip
                     contentStyle={{
-                      backgroundColor: '#11243A',
-                      border: '1px solid #24364D',
+                      backgroundColor: '#FFFFFF',
+                      border: '1px solid #E5E7EB',
                       borderRadius: '8px',
-                      fontFamily: 'JetBrains Mono',
+                      fontFamily: 'Inter',
                       fontSize: '12px',
-                      color: '#F8FAFC',
+                      color: '#172033',
+                      boxShadow: '0 4px 16px rgba(0,0,0,0.08)',
                     }}
                     // eslint-disable-next-line @typescript-eslint/no-explicit-any
                     formatter={(value: any, name: any) => [`${value}%`, name === 'yes' ? 'Yes' : 'No']}
@@ -275,11 +280,11 @@ export default function Survey() {
               <div className="flex items-center gap-6 mt-4">
                 <div className="flex items-center gap-2">
                   <div className="w-3 h-3 rounded-sm" style={{ backgroundColor: COLORS.yes }} />
-                  <span className="font-mono text-xs text-[#94A3B8]">Yes</span>
+                  <span className="font-body text-xs text-[#64748B]">Yes</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <div className="w-3 h-3 rounded-sm" style={{ backgroundColor: COLORS.no }} />
-                  <span className="font-mono text-xs text-[#94A3B8]">No</span>
+                  <span className="font-body text-xs text-[#64748B]">No</span>
                 </div>
               </div>
             </div>

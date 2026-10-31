@@ -14,7 +14,7 @@ export default function SectionHeader({
   title,
   subtitle,
   align = 'left',
-  accentColor = '#38BDF8',
+  accentColor = '#593ACB',
 }: SectionHeaderProps) {
   const alignClass = align === 'center' ? 'text-center items-center' : 'text-left items-start';
 
@@ -25,7 +25,7 @@ export default function SectionHeader({
         whileInView={{ opacity: 1, x: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.4 }}
-        className="font-mono text-[11px] tracking-[0.2em] uppercase"
+        className="font-body text-xs sm:text-sm tracking-[0.15em] uppercase font-bold"
         style={{ color: accentColor }}
       >
         {label}
@@ -35,7 +35,7 @@ export default function SectionHeader({
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.5, delay: 0.1 }}
-        className="font-heading text-2xl md:text-3xl lg:text-4xl font-semibold text-white leading-tight"
+        className="font-heading text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#0F172A] leading-tight"
       >
         {title}
       </motion.h2>
@@ -45,7 +45,7 @@ export default function SectionHeader({
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="text-[#94A3B8] text-base leading-relaxed max-w-2xl"
+          className="text-[#334155] text-base sm:text-lg leading-relaxed max-w-2xl font-normal"
         >
           {subtitle}
         </motion.p>

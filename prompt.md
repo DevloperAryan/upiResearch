@@ -1,786 +1,483 @@
-# PROJECT: UPI SECURITY LAB
-## An Immersive Interactive Cybersecurity Research Website
+# UPI Security Lab | Complete Visual & UX Refinement
 
-Act as a senior UI/UX designer, creative director, cybersecurity researcher, motion designer, and senior React engineer.
+## Project Objective
 
-Your task is to design and build a complete, production-quality, highly interactive research website based on:
+Transform the existing UPI Security Lab website into a premium, modern, professional fintech research and educational experience.
 
-**Research Topic:** Digital Payments and UPI: Security Challenges  
-**Website Title:** UPI SECURITY LAB  
-**Main Tagline:** UPI SCAMS: SPOT THEM. STOP THEM.  
-**Academic Context:** VSIT Student Research Symposium 2026  
-**Purpose:** An educational and research-driven digital experience that explains UPI security challenges, common fraud techniques, cybersecurity mechanisms, research findings, and practical prevention strategies.
+Use the official PhonePe website as the primary visual inspiration:
 
-This should feel like an independently designed, premium cybersecurity research publication, not a conventional college project website.
+https://www.phonepe.com/
 
----
+The objective is NOT to clone PhonePe.
 
-# 1. CREATIVE DIRECTION AND DESIGN PHILOSOPHY
+Study its design language, visual hierarchy, whitespace, section composition, illustrations, typography and movement.
 
-The most important requirement is visual quality.
+The current website has a functional foundation, but its dark dashboard-like appearance feels generic and AI-generated.
 
-I do NOT want:
-- Generic AI-generated website aesthetics.
-- Repetitive cards everywhere.
-- Excessive blue-purple gradients.
-- Glowing gradient buttons.
-- Random floating circles and decorative blobs.
-- Unnecessary glassmorphism.
-- Generic SaaS dashboard layouts.
-- Oversized headings on every section.
-- Repetitive three-column card patterns.
-- Stock illustrations that look artificial.
-- Excessive animations that compromise usability.
+I want to move towards a clean, light, editorial fintech design with carefully implemented scroll-triggered animations and interactive visual storytelling.
 
-I want a visually sophisticated, cinematic, editorial and technically credible design.
-
-### Design inspiration
-
-Take visual inspiration from:
-- Premium cybersecurity research publications.
-- Digital forensics and threat intelligence dashboards.
-- High-end editorial websites.
-- Modern financial technology interfaces.
-- Scientific research journals.
-- Interactive investigative journalism websites.
-- Technical documentation and data visualization platforms.
-
-Use these as design references, not templates to copy.
-
-### Visual personality
-
-The website should communicate:
-
-1. Trust and security.
-2. Technical intelligence.
-3. Research credibility.
-4. Modern financial technology.
-5. A subtle sense of urgency around cyber threats.
-
-The visual experience should be immersive without becoming theatrical or distracting.
+**The overall experience should feel like a professionally designed financial technology research platform, not an AI-generated dashboard template.**
 
 ---
 
-# 2. INTENTIONAL COLOR SYSTEM
+# PHASE 1: UNDERSTAND THE EXISTING PROJECT
 
-Build a consistent design system around a dark cybersecurity research aesthetic.
+Before making modifications:
 
-Use the following palette:
+1. Inspect the complete React + TypeScript project.
+2. Understand the current component structure and routing.
+3. Inspect existing CSS, Tailwind configuration and design tokens.
+4. Identify reusable components and existing animations.
+5. Understand all existing website sections and their functionality.
+6. Identify where existing visual design patterns are repeated unnecessarily.
+
+Inspect these sections in particular:
+
+- Overview / Hero
+- How UPI Works
+- Threat Intelligence
+- Fraud Simulator
+- Research Library
+- Research Findings
+- Defence Quiz
+
+Do not delete existing content, functionality, research information, charts or interactive features.
+
+Do not break the existing CSS cascade fix.
+
+The project uses Tailwind CSS v4. Preserve its correct base-layer and utility behavior.
+
+---
+
+# PHASE 2: ESTABLISH A NEW VISUAL IDENTITY
+
+## 2.1 Design Direction
+
+Adopt:
+
+- Light theme as the default and primary theme.
+- Premium fintech visual language.
+- Editorial-style section layouts.
+- Generous whitespace.
+- Strong typographic hierarchy.
+- Refined illustrations and diagrams.
+- Subtle gradients used selectively.
+- Smooth and meaningful micro-interactions.
+
+Avoid:
+
+- Generic AI dashboard appearance.
+- Full-page dark navy backgrounds.
+- Excessive glassmorphism.
+- Random gradient blobs.
+- Excessive rounded cards.
+- Neon-colored borders.
+- Excessive shadows.
+- Every section looking like an identical 3-column card grid.
+- Unnecessary decorative elements.
+
+## 2.2 Color System
+
+Establish reusable design tokens.
 
 Primary background:
-- Deep midnight navy: #071426
-- Secondary background: #0B192B
-- Elevated surface: #11243A
+#F7F8FC
+
+Secondary background:
+#F0EEFA
+
+Card background:
+#FFFFFF
+
+Primary text:
+#172033
+
+Secondary text:
+#64748B
 
 Primary accent:
-- Electric cyan: #38BDF8
-- Soft cyan: #67E8F9
+#593ACB
 
-Supporting colors:
-- White: #F8FAFC
-- Muted text: #94A3B8
-- Border: #24364D
+Secondary accent:
+#0891B2
 
-Semantic colors:
-- Danger: #F87171
-- Warning: #FBBF24
-- Success: #34D399
-- Information: #60A5FA
+Border:
+#E5E7EB
 
-### Color usage rules
+Success:
+#16865D
 
-- Use dark navy as the main visual foundation.
-- Use cyan sparingly for important interactive elements, active states and technical highlights.
-- Use red only for suspicious activities, threats and warnings.
-- Use green for verified transactions and protective actions.
-- Use amber for caution and uncertainty.
-- Introduce occasional light-background research sections to create visual contrast.
-- Avoid applying gradients to every component.
+Warning:
+#D97706
 
-Every color must have a purpose.
+Danger:
+#DC4545
 
----
+Create CSS variables and use them consistently throughout the website.
 
-# 3. TYPOGRAPHY AND VISUAL HIERARCHY
+Do not scatter unrelated hexadecimal values across components.
 
-Use a deliberate typography system.
+Purple should be the principal brand accent, while cyan should be used for technology, data and security-related visual elements.
 
-Suggested fonts:
-- Headings: Space Grotesk or Sora.
-- Body: Inter.
-- Technical labels: JetBrains Mono.
+## 2.3 Typography
 
-Typography should feel like a technical research publication.
+Use the existing font files and typography configuration wherever possible.
 
-Use:
-- Strong editorial headlines.
-- Compact uppercase section labels.
-- Carefully controlled font weights.
-- Comfortable paragraph line lengths.
-- Monospaced labels for transaction IDs, data values and technical annotations.
+Preferred hierarchy:
 
-Avoid excessive font sizes and inconsistent typography.
+- Headings: Space Grotesk
+- Body: Inter
+- Small labels: Inter with subtle letter spacing.
+
+Typography should feel refined and readable.
+
+Use large, confident hero typography, clear section headings and restrained uppercase eyebrow labels.
+
+Do not make every heading uppercase or monospaced.
 
 ---
 
-# 4. TECHNOLOGY STACK
+# PHASE 3: REDESIGN THE WEBSITE LAYOUT
 
-Build the actual working website using:
+## 3.1 Navigation
 
-Core:
-- React
-- TypeScript
-- Vite
-
-Styling:
-- Tailwind CSS
-- Custom CSS for complex visual effects
-- CSS variables for design tokens
-
-Animation:
-- Framer Motion for UI transitions and interactive animations.
-- GSAP with ScrollTrigger for selected cinematic scroll experiences.
-- CSS animations for lightweight micro-interactions.
-
-Visualization:
-- Recharts for charts and research data.
-- Custom SVG diagrams for payment flows and security illustrations.
-
-Icons:
-- Lucide React.
-
-Additional:
-- React Router DOM if routing is necessary.
-- React Intersection Observer or native IntersectionObserver.
-- React Hook Form for survey forms if needed.
-
-Use current stable, compatible library versions.
-
-Do not install unnecessary dependencies. Use GSAP only where it provides a meaningful advantage over CSS or Framer Motion.
-
----
-
-# 5. WEBSITE INFORMATION ARCHITECTURE
-
-Build the website as a complete, cohesive research experience.
-
-Create the following sections.
-
-## SECTION 01: CINEMATIC HERO
-
-This is the first impression and should be visually exceptional.
-
-Main title:
-
-UPI SCAMS.
-SPOT THEM.
-STOP THEM.
-
-Subtitle:
-
-Digital Payments and UPI: Security Challenges
-
-Supporting description:
-
-An interactive investigation into digital payment fraud, social engineering, security mechanisms and user awareness.
-
-Design requirements:
-
-- Full-width cinematic hero.
-- Deep navy background.
-- Large editorial typography.
-- A sophisticated smartphone/payment interface as the main visual object.
-- Subtle animated transaction indicators.
-- Fine technical grid or circuit-inspired details.
-- A moving scanning line or payment verification animation.
-- Carefully controlled parallax.
-- Small floating threat indicators.
-- A clear scroll indicator.
-
-Add two CTA buttons:
-
-1. Explore Threats
-2. Explore Research
-
-The hero should look designed by an experienced digital product design studio.
-
-Do not use an ordinary gradient background with a phone mockup placed in the middle.
-
-Create a custom visual composition.
-
-## SECTION 02: UPI AT A GLANCE
-
-Show the importance and scale of India's UPI ecosystem.
-
-Include:
-- Total transaction volume.
-- Transaction value.
-- UPI adoption and growth.
-- Relevant financial-year statistics.
-
-Use animated counters and a clean data presentation.
-
-IMPORTANT:
-Research actual statistics from official sources before displaying them.
-
-Each statistic must include:
-- Value.
-- Unit.
-- Financial year or reporting date.
-- Source.
-
-Never invent statistics or display illustrative numbers as actual findings.
-
-## SECTION 03: UNDERSTANDING UPI
-
-Explain how a UPI transaction works.
-
-Create an interactive animated payment-flow diagram:
-
-Payer → PSP/UPI Application → NPCI UPI Infrastructure → Participating Banks → Beneficiary
-
-Show:
-- Payment initiation.
-- Authentication.
-- Transaction routing.
-- Bank processing.
-- Confirmation.
-
-Allow visitors to click individual stages to reveal explanations.
-
-Include a separate section explaining security mechanisms:
-- UPI PIN authentication.
-- Device and mobile-number binding.
-- Bank-side monitoring.
-- Transaction notifications.
-- NPCI and RBI security frameworks.
-
-Ensure technical explanations are accurate. Do not oversimplify the actual architecture.
-
-## SECTION 04: THREAT INTELLIGENCE CENTER
-
-This is one of the most important sections.
-
-Create an immersive interactive threat explorer covering five major UPI fraud categories:
-
-1. Collect Request Fraud.
-2. Fake QR Code Scams.
-3. Fake Customer Care Scams.
-4. Screen-Sharing and Remote Access Scams.
-5. SIM Swap Fraud.
-
-Each threat should have a distinct visual identity.
-
-Do not simply place five identical cards on the screen.
-
-Possible interactions:
-- Horizontal threat navigation.
-- Interactive case-study panels.
-- Animated attack-flow diagrams.
-- Suspicious message simulations.
-- Device mockups.
-- Red-flag highlighting.
-- Expandable technical explanations.
-
-For each scam, explain:
-
-A. What it is.
-B. How the attacker approaches the victim.
-C. How the scam works step by step.
-D. What psychological manipulation is involved.
-E. Warning signs.
-F. Potential consequences.
-G. Prevention strategies.
-
-Add a visual attack sequence for every category.
-
-Important technical distinction:
-
-Scanning a QR code alone does not automatically steal money. The risk arises when the victim is deceived into authorizing a payment or revealing sensitive information.
-
-Similarly, explain that remote-access applications create risk through granted permissions and exposed activity, rather than claiming that merely installing any such app guarantees a compromise.
-
-## SECTION 05: INTERACTIVE SCAM SIMULATOR
-
-Build a realistic educational simulation.
-
-Visitors should be able to experience simulated fraud scenarios without interacting with any real banking system.
-
-Example scenario:
-
-A user receives a message:
-
-"Congratulations! Your ₹2,500 refund is ready. Approve this UPI request and enter your PIN to receive the money."
-
-Display a simulated payment-app interface.
-
-Allow the visitor to choose:
-- Approve.
-- Decline.
-- Verify sender.
-
-Depending on their choice:
-- Show an educational outcome.
-- Highlight the warning signs.
-- Explain why the action was safe or unsafe.
-
-Build at least three scenarios.
-
-All scenarios must be simulated. Never request actual banking credentials, UPI PINs, OTPs or personal financial details.
-
-## SECTION 06: RESEARCH OBJECTIVES AND METHODOLOGY
-
-Create an academic research section.
-
-Research objectives:
-
-- Identify common UPI fraud techniques.
-- Understand social-engineering methods.
-- Examine security and authentication mechanisms.
-- Evaluate awareness among college students.
-- Recommend practical prevention measures.
-
-Methodology:
-
-- Secondary research.
-- Official cybersecurity advisories.
-- NPCI and RBI publications.
-- Government reports.
-- Student awareness survey.
-- Comparative analysis of fraud patterns.
-
-Display the methodology as an elegant visual research process rather than a generic list of cards.
-
-## SECTION 07: STUDENT AWARENESS SURVEY
-
-Create a fully functional survey visualization module.
-
-Questions:
-
-1. Do you know that a UPI PIN is not required to receive money?
-2. Have you encountered a suspicious UPI message or call?
-3. Can you identify a fake collect request?
-4. Do you verify the recipient before approving a payment?
+Create a clean, premium navigation bar.
 
 Requirements:
 
-- Editable survey inputs.
-- Respondent count.
-- Yes/No response counts.
-- Dynamic percentage calculations.
-- Interactive charts.
-- Responsive chart layout.
-- Data validation.
-- Clear sample-size indication.
+- White or subtly translucent background.
+- Sticky positioning.
+- Thin bottom border.
+- Proper horizontal spacing.
+- Clear logo and project identity.
+- Well-distributed navigation links.
+- Active section indicator.
+- Smooth anchor scrolling.
+- Refined hover transitions.
 
-Allow the research team to enter actual survey results.
+Navigation should remain usable on mobile with a proper mobile menu.
 
-IMPORTANT:
-Never fabricate participant responses or present demo data as genuine research findings.
+## 3.2 Hero Section
 
-If no real data exists, show an empty research state or clearly labelled demonstration data.
+Give the website a strong and memorable first impression.
 
-Include methodology limitations and sample-size information.
+Create a modern two-column hero layout.
 
-## SECTION 08: DATA VISUALIZATION AND FINDINGS
+Left side:
+- Small symposium/research label.
+- Strong headline about understanding UPI security.
+- Supporting description.
+- Primary CTA: Explore UPI Security.
+- Secondary CTA: Try Fraud Simulator.
 
-Create a professional research dashboard featuring:
+Right side:
+- A custom UPI transaction/security illustration.
+- Animated payment flow.
+- Subtle floating transaction elements.
+- Security shield, payment nodes and connection paths.
 
-- Survey response charts.
-- Scam-category comparisons.
-- Awareness-gap visualization.
-- Security mechanism comparisons.
-- Relevant official UPI statistics.
+Use SVG, CSS illustrations or existing relevant project assets.
 
-Use Recharts and custom SVG visualizations.
+Do not use generic stock illustrations or random AI-generated fintech artwork.
 
-Charts should have:
-- Clear labels.
-- Proper units.
-- Source attribution.
-- Tooltips.
-- Responsive sizing.
-- Accessible color contrast.
+The hero should feel spacious, balanced and visually distinctive.
 
-Avoid decorative charts without meaningful data.
+## 3.3 How UPI Works
 
-Every visualization must communicate a research finding.
+Redesign this section as an interactive visual explanation.
 
-## SECTION 09: SECURITY DEFENCE CENTER
+Requirements:
 
-Create an interactive security checklist.
+- Clear introductory heading.
+- Horizontal transaction journey on desktop.
+- Distinct payment stages.
+- Connecting lines between transaction stages.
+- Active stage highlighting.
+- Smooth stage transitions.
+- Detailed explanation panel below the journey.
 
-Cover:
+Preserve existing transaction steps and their functionality.
 
-- Never disclose UPI PIN or OTP.
-- Verify payment recipient and amount.
-- Never approve unexpected collect requests.
-- Avoid unknown APKs and remote-access tools.
-- Use official customer-support channels.
-- Secure your mobile device.
-- Monitor transaction alerts.
-- Report suspected fraud immediately.
+On mobile, make the flow vertically arranged or horizontally scrollable with appropriate touch interactions.
 
-Use interactive checklist behaviour with completion progress.
+## 3.4 Built-in Security Mechanisms
 
-Add a special emergency-response panel.
+Do not simply display another generic collection of cards.
 
-Important Indian reporting information:
+Use a refined feature layout.
 
-Cybercrime Helpline: 1930
+Include:
 
-Official reporting portal:
-https://cybercrime.gov.in/
+- Security mechanism icons.
+- Clear titles.
+- Concise descriptions.
+- Subtle hover states.
+- Different visual emphasis where appropriate.
 
-Explain the immediate steps following a fraudulent transaction:
-1. Contact your bank or payment provider.
-2. Call 1930 promptly.
-3. File a complaint on the official portal.
-4. Preserve transaction references and evidence.
+Consider a combination of feature cards and editorial text layouts.
 
-## SECTION 10: INTERACTIVE KNOWLEDGE QUIZ
+Use consistent iconography, preferably Lucide icons already supported by the project.
 
-Build a polished quiz with 8-10 questions.
+## 3.5 Threat Intelligence
 
-Features:
-- One question at a time.
-- Multiple-choice answers.
-- Progress indicator.
-- Immediate feedback.
-- Explanations for correct answers.
-- Final score.
-- Knowledge assessment.
-- Restart option.
+Give this section a distinct visual identity.
 
-The quiz should feel like an educational cybersecurity assessment, not a basic HTML form.
+Present threats as structured research insights rather than ordinary dashboard cards.
 
-Do not store personal information.
+Requirements:
 
-## SECTION 11: RESEARCH CONCLUSION
+- Clear fraud categories.
+- Severity indicators.
+- Concise explanations.
+- Relevant visual representations.
+- Refined category navigation or filtering if supported by current functionality.
 
-Present the central research conclusion:
+Use red and amber selectively for threat severity.
 
-"UPI security is not only a technological responsibility. It also depends on informed users, responsible digital behaviour and timely fraud reporting."
+## 3.6 Fraud Simulator
 
-Use a strong editorial layout with a concise research summary.
+Make this one of the most visually interesting sections.
 
-## SECTION 12: REFERENCES AND RESEARCH LIBRARY
+Use a clear two-panel composition.
 
-This section is essential.
+Left:
+- Interactive simulation inputs.
+- Scenario selection.
+- Input fields and controls.
 
-Create a well-organized research resource library containing official sources and relevant publications.
+Right:
+- Simulation results.
+- Risk assessment.
+- Visual threat indicators.
+- Explanations and security recommendations.
 
-Use these websites as primary starting points:
+Use a subtle tinted background to distinguish the simulator from informational sections.
 
-NPCI:
-https://www.npci.org.in/
+Preserve the existing simulator logic.
 
-NPCI Fraud Awareness:
-https://www.npci.org.in/fraud-awareness
+## 3.7 Research Library and Findings
 
-NPCI UPI FAQs:
-https://www.npci.org.in/what-we-do/upi/faqs
-
-Reserve Bank of India:
-https://www.rbi.org.in/
-
-RBI Digital Banking Safeguards:
-https://rbikehtahai.rbi.org.in/safeguards-for-digital-banking.html
-
-National Cyber Crime Reporting Portal:
-https://cybercrime.gov.in/
-
-Ministry of Home Affairs:
-https://www.mha.gov.in/
-
-Press Information Bureau:
-https://www.pib.gov.in/
-
-CERT-In:
-https://www.cert-in.org.in/
-
-RBI Database:
-https://dbie.rbi.org.in/
-
-Google Scholar:
-https://scholar.google.com/
-
-Include research categories:
-
-- UPI architecture and security.
-- Digital payment fraud.
-- Social engineering.
-- QR code fraud.
-- SIM swapping.
-- Mobile banking security.
-- Cybersecurity awareness.
-- Digital payment regulations.
-
-For every research source, show:
-- Title.
-- Publishing organization.
-- Publication date, when available.
-- Short description.
-- Research category.
-- Direct source link.
-
-Add search and filtering by category.
-
-Research integrity requirements:
-
-- Prioritize government, regulatory, NPCI and academic sources.
-- Distinguish primary sources from news articles.
-- Never invent publication titles, authors, dates, statistics or URLs.
-- Verify that links lead to the stated resources.
-- Cite claims close to where they appear.
-- Record the access date for changing web resources.
-- Distinguish research evidence from educational interpretation.
-
----
-
-# 6. ADVANCED MOTION AND INTERACTION DESIGN
-
-Animations should make the website feel alive without compromising clarity.
+Create a research-focused editorial layout.
 
 Use:
 
-1. Scroll-triggered section entrances.
-2. Subtle parallax on the hero composition.
-3. Animated transaction-flow paths.
-4. SVG line-drawing animations.
-5. Smooth tab transitions.
-6. Interactive threat highlighting.
-7. Animated data counters.
-8. Chart transitions.
-9. Hover-based micro-interactions.
-10. Carefully timed text reveals.
-11. Animated quiz feedback.
-12. Scroll progress indicator.
+- Clean research article layouts.
+- Readable typography.
+- Clear content grouping.
+- Refined data visualizations.
+- Source and category indicators.
+- Useful visual hierarchy.
 
-### Motion rules
+Charts should have sufficient whitespace and readable labels.
 
-- Avoid animating every element.
-- Avoid excessive bounce effects.
-- Avoid constant movement in reading areas.
-- Prefer subtle movement and meaningful transitions.
-- Use reduced-motion accessibility support.
-- Keep animations smooth on mid-range mobile devices.
-- Never sacrifice readability for cinematic effects.
+Do not invent research statistics, sources or findings.
 
-Use GSAP only for selected scroll sequences where it improves the storytelling.
+Preserve the existing information and datasets.
 
----
+## 3.8 Defence Quiz
 
-# 7. RESPONSIVE DESIGN
+Make the quiz feel like an interactive learning experience.
 
-The website must work exceptionally well on:
+Use:
+- Clear question presentation.
+- Distinct answer states.
+- Smooth selection feedback.
+- Progress indicators.
+- Correct and incorrect answer feedback.
+- Accessible interaction states.
 
-- Desktop.
-- Laptop.
-- Tablet.
-- Mobile phones.
-
-Mobile should not feel like a compressed desktop layout.
-
-Design separate responsive behaviours for:
-- Navigation.
-- Hero composition.
-- Threat explorer.
-- Payment-flow diagrams.
-- Charts.
-- Research library.
-- Quiz.
-- Survey module.
-
-Make touch interactions comfortable.
+Preserve the original quiz functionality and scoring.
 
 ---
 
-# 8. ACCESSIBILITY AND PERFORMANCE
+# PHASE 4: IMPLEMENT PURPOSEFUL SCROLL ANIMATIONS
 
-Implement:
+This is an important part of the refinement.
 
-- Semantic HTML.
-- Keyboard-accessible controls.
-- Accessible form labels.
-- Appropriate ARIA attributes.
-- Visible focus states.
-- Reduced-motion support.
-- Good color contrast.
-- Lazy loading where appropriate.
-- Optimized images.
-- Code splitting where useful.
+I want the website to feel alive while remaining professional.
 
-Target excellent Lighthouse scores.
+Do not animate everything.
 
-Avoid unnecessarily large animation libraries or oversized image assets.
+Implement a reusable scroll-reveal animation system.
 
----
+## 4.1 Hero animations
 
-# 9. PROJECT ARCHITECTURE
+On initial page load:
 
-Use a clean, maintainable React + TypeScript architecture.
+- Headline fades in with a subtle upward movement.
+- Supporting text appears slightly afterward.
+- CTA buttons enter with a short stagger.
+- Hero illustration elements animate into position.
+- Payment connection paths can animate drawing themselves.
 
-Suggested structure:
+Keep animations smooth and relatively fast.
 
-src/
-├── app/
-│   ├── App.tsx
-│   └── router.tsx
-│
-├── components/
-│   ├── layout/
-│   │   ├── Navbar.tsx
-│   │   ├── Footer.tsx
-│   │   └── SectionHeader.tsx
-│   │
-│   ├── visual/
-│   │   ├── PaymentFlow.tsx
-│   │   ├── ThreatDiagram.tsx
-│   │   ├── AnimatedCounter.tsx
-│   │   └── DataCharts.tsx
-│   │
-│   └── ui/
-│
-├── sections/
-│   ├── Hero/
-│   ├── UPIOverview/
-│   ├── HowUPIWorks/
-│   ├── ThreatExplorer/
-│   ├── ScamSimulator/
-│   ├── ResearchMethodology/
-│   ├── Survey/
-│   ├── ResearchFindings/
-│   ├── DefenceCenter/
-│   ├── Quiz/
-│   ├── Conclusion/
-│   └── ResearchLibrary/
-│
-├── data/
-│   ├── threats.ts
-│   ├── quiz.ts
-│   ├── references.ts
-│   └── statistics.ts
-│
-├── hooks/
-├── utils/
-├── styles/
-│   ├── globals.css
-│   └── animations.css
-│
-└── types/
+## 4.2 Section reveal animations
 
-public/
-├── images/
-├── icons/
-└── fonts/
+When sections enter the viewport:
 
-docs/
-├── research-sources.md
-├── research-methodology.md
-└── content-verification.md
+- Section headings fade in and move upward slightly.
+- Supporting descriptions appear afterward.
+- Feature cards reveal with a staggered entrance.
+- Illustrations enter with subtle motion.
+- Charts animate into view.
 
-Adapt this architecture where necessary, but keep components modular and reusable.
+Use IntersectionObserver or an existing compatible animation library.
 
----
+Make animations trigger once by default instead of replaying excessively during scrolling.
 
-# 10. IMPLEMENTATION WORKFLOW
+## 4.3 Staggered card animation
 
-Do not immediately generate the entire website using one generic template.
+For grids:
 
-Work in the following stages:
+- Reveal cards sequentially.
+- Use approximately 70–100ms between cards.
+- Use subtle opacity and translate animations.
+- Avoid excessive zoom and bounce effects.
 
-### Phase 1: Research
+## 4.4 Scroll-based interactions
 
-- Investigate the subject.
-- Open the official research websites.
-- Collect verified statistics.
-- Identify authoritative information about each scam.
-- Verify all external URLs.
-- Create a research source document.
-- Separate verified facts from illustrative examples.
+Implement selectively:
 
-### Phase 2: Design system
+- Active navigation section tracking.
+- Smooth section navigation.
+- Subtle page reading-progress indicator.
+- Animated transaction flow.
+- Progress indicators where meaningful.
+- Counter animations only for real numerical data.
 
-- Establish design tokens.
-- Define typography.
-- Define spacing and layout rules.
-- Design the visual hierarchy.
-- Create reusable UI components.
-- Establish animation guidelines.
+Avoid unnecessary parallax effects.
 
-### Phase 3: Visual implementation
+Do not implement scroll-jacking or animations that interfere with normal scrolling.
 
-Build the hero first.
+## 4.5 Hover interactions
 
-Then develop the website section by section.
+Buttons:
+- Subtle background transitions.
+- Small directional movement where appropriate.
+- Clear hover and active states.
 
-Ensure every section has its own visual composition and storytelling approach.
+Cards:
+- Slight elevation.
+- Border color transition.
+- Subtle icon interaction.
 
-Avoid repetitive layouts.
+Interactive diagrams:
+- Highlight active nodes.
+- Animate connection paths.
+- Provide clear interaction feedback.
 
-### Phase 4: Functionality
+## 4.6 Animation implementation rules
 
-Implement all interactive elements.
+- Prefer the animation library already installed in the project.
+- If no suitable library exists, use CSS animations/transitions with IntersectionObserver.
+- Do not introduce large animation dependencies without justification.
+- Prefer transform and opacity for performance.
+- Avoid animating layout properties unnecessarily.
+- Respect `prefers-reduced-motion`.
+- Ensure all functionality remains accessible without animations.
 
-Test:
-- Threat navigation.
-- Scam simulations.
-- Payment-flow interactions.
-- Survey calculations.
-- Charts.
-- Quiz scoring.
-- Resource filtering.
-- Navigation and scrolling.
+Suggested timing:
+- Small transitions: 150–250ms.
+- Hover interactions: 180–250ms.
+- Section reveals: 450–650ms.
+- Hero animations: 500–800ms.
 
-No decorative controls that do nothing.
-
-### Phase 5: Quality assurance
-
-- Test the entire website.
-- Fix console errors.
-- Verify all links.
-- Check responsive behaviour.
-- Test animations.
-- Validate calculations.
-- Test keyboard navigation.
-- Check reduced-motion mode.
-- Optimize performance.
+Use consistent easing curves throughout the website.
 
 ---
 
-# 11. FINAL QUALITY EXPECTATIONS
+# PHASE 5: SPACING AND LAYOUT SYSTEM
 
-The final result should feel like a professionally commissioned digital research experience.
+Maintain consistent spacing across the entire application.
 
-It should combine:
+Recommended desktop layout:
 
-- The visual storytelling of a premium editorial publication.
-- The clarity of an academic research paper.
-- The interactivity of a cybersecurity learning platform.
-- The precision of a financial technology interface.
-- The cinematic quality of a carefully art-directed digital experience.
+- Maximum content width: 1200–1280px.
+- Horizontal page padding: 32–40px.
+- Section vertical padding: 88–112px.
+- Card padding: 24–28px.
+- Grid gaps: 20–24px.
 
-The website must have a clear visual identity.
+Tablet and mobile spacing must be responsive.
 
-Do not blindly follow common AI website patterns.
+Use reusable layout components and existing design tokens where appropriate.
 
-Do not fill empty spaces with random decorative elements.
+Every section should have a clear visual beginning and ending.
 
-Use whitespace, typography, carefully selected illustrations, data visualization and intentional composition.
+Not every section should have the same background or layout composition.
 
-Every section must have a reason to exist.
+Alternate white and subtly tinted backgrounds where it improves section separation.
 
-Every animation must serve a purpose.
+---
 
-Every statistic must have a source.
+# PHASE 6: RESPONSIVE DESIGN
 
-Every interactive component must work.
+Test at:
 
-**MOST IMPORTANT: Build the actual functional React website in the project workspace. Do not stop at a design proposal, wireframe, screenshot or static prototype.**
+- 1920 × 1080
+- 1440 × 900
+- 1366 × 768
+- 1024 × 768
+- 768 × 1024
+- 390 × 844
 
-Start by inspecting the existing project files. Preserve useful existing work, establish the architecture and then implement the complete experience.
+Verify:
 
-Run the project, test it and resolve errors before considering the task complete.
+- No horizontal overflow.
+- No overlapping content.
+- Proper mobile navigation.
+- Readable typography.
+- Properly scaled diagrams.
+- Responsive charts.
+- Accessible interactive elements.
+- Appropriate animation performance.
 
-The final website should be ready for deployment on Vercel or Netlify.
+---
+
+# PHASE 7: FINAL QUALITY CHECK
+
+Before completing:
+
+1. Run the application.
+2. Inspect every section.
+3. Verify all existing interactions.
+4. Check all links and buttons.
+5. Check responsive layouts.
+6. Verify animations on actual scrolling.
+7. Check reduced-motion behavior.
+8. Check browser console for errors.
+9. Ensure the light theme is consistent across the entire site.
+10. Confirm that the previous CSS spacing fix has not regressed.
+
+## IMPORTANT CREATIVE DIRECTION
+
+Do not produce another generic AI-generated website.
+
+I want intentional visual composition.
+
+Use visual storytelling, strong typography, whitespace, distinctive section layouts and subtle motion.
+
+A few sections can have large illustrations or diagrams instead of cards.
+
+Use cards only when the content genuinely benefits from a card-based layout.
+
+Do not copy PhonePe's logo, illustrations, proprietary assets or exact layouts.
+
+Use PhonePe as inspiration for quality, visual confidence, movement and clarity while preserving UPI Security Lab's own identity.
+
+## FINAL EXPECTATION
+
+The website should feel like a premium fintech research experience with:
+
+- A beautiful light theme.
+- Professional typography.
+- Strong visual hierarchy.
+- Elegant scroll-triggered animations.
+- Interactive UPI transaction storytelling.
+- Clean research and data presentation.
+- Consistent responsive layouts.
+
+Implement the refinement in the actual existing React TypeScript codebase, not just in a design mockup.
+
+At completion, provide a summary of modified files, implemented animations, design changes and any remaining issues.
